@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("/skills")
-@CrossOrigin()
+@CrossOrigin(origins = "https://hosting-angular-a7dac.web.app")
 public class CSkill {
     @Autowired
     SSkill sSkill;
