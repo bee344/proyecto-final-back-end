@@ -77,9 +77,9 @@ public class CEstudios {
         if(StringUtils.isBlank(dtoestu.getNombreS()))
             return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
         if(StringUtils.isBlank(dtoestu.getAlmaMaterS()))
-            return new ResponseEntity(new Mensaje("El nombre de la institucion es obligatorio"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("El nombre de la institución es obligatorio"), HttpStatus.BAD_REQUEST);
         if(StringUtils.isBlank(dtoestu.getFechaS()))
-            return new ResponseEntity(new Mensaje("La fecha de graduacion es obligatoria, si no se ha graduado ponga 'En curso'"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("La fecha de graduación es obligatoria, si no se ha graduado ponga 'En curso'"), HttpStatus.BAD_REQUEST);
         
         Estudios estudios = sEstudios.getOne(id).get();
         estudios.setNombreS(dtoestu.getNombreS());

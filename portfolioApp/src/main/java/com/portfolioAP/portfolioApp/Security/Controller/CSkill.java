@@ -71,7 +71,7 @@ public class CSkill {
         if(!sSkill.existsById(id))
             return new ResponseEntity(new Mensaje("El ID no existe"), HttpStatus.BAD_REQUEST);
         if(sSkill.existsByNombreSk((dtoskill.getNombreSk())) && sSkill.getByNombreSk(dtoskill.getNombreSk()).get().getId() != id)
-            return new ResponseEntity(new Mensaje("Esa habilidad ya existe"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("Ya ha incluido esa habilidad"), HttpStatus.BAD_REQUEST);
         if(StringUtils.isBlank(dtoskill.getNombreSk()))
             return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
         if(dtoskill.getProgresoSk() == null)

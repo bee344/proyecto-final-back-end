@@ -42,11 +42,11 @@ public class CAbout {
     @PostMapping("/crear")
     public ResponseEntity<?> create(@RequestBody DtoAbout dtoabout) {
         if(StringUtils.isBlank(dtoabout.getProfesion()))
-            return new ResponseEntity(new Mensaje("El nombre de la profesion es obligatorio"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("El nombre de la profesión es obligatorio"), HttpStatus.BAD_REQUEST);
         if(StringUtils.isBlank(dtoabout.getDescripcion()))
-            return new ResponseEntity(new Mensaje("La descripcion es obligatoria"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("La descripción es obligatoria"), HttpStatus.BAD_REQUEST);
         if(sAbout.existsByProfesion((dtoabout.getProfesion())))
-            return new ResponseEntity(new Mensaje("Esa profesion ya existe"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("Esa profesión ya existe"), HttpStatus.BAD_REQUEST);
         
         About about = new About(dtoabout.getProfesion(), dtoabout.getDescripcion());
         sAbout.save(about);
@@ -72,16 +72,16 @@ public class CAbout {
         if(!sAbout.existsById(id))
             return new ResponseEntity(new Mensaje("El ID no existe"), HttpStatus.BAD_REQUEST);
         if(sAbout.existsByProfesion((dtoabout.getProfesion())) && sAbout.getByProfesion(dtoabout.getProfesion()).get().getId() != id)
-            return new ResponseEntity(new Mensaje("Esa profesion ya existe"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("Esa profesión ya existe"), HttpStatus.BAD_REQUEST);
         if(StringUtils.isBlank(dtoabout.getProfesion()))
-            return new ResponseEntity(new Mensaje("El nombre de la profesion es obligatorio"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("El nombre de la profesión es obligatorio"), HttpStatus.BAD_REQUEST);
         
         About about = sAbout.getOne(id).get();
         about.setProfesion(dtoabout.getProfesion());
         about.setDescripcion(dtoabout.getDescripcion());
         
         sAbout.save(about);
-        return new ResponseEntity(new Mensaje("Descripcion actualizada"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("Descripción actualizada"), HttpStatus.OK);
     }
     
     @DeleteMapping("/delete/{id}")
